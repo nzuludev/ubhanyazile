@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ubhanyazile - Njabulo Langa ft Umjikelo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="poster">
+
+    <header class="head">
+      <h1 class="title">Ubhanyazile</h1>
+      <p class="subtitle">Njabulo Langa ft Umjikelo</p>
+    </header>
+
+    <section class="front">
+
+      <div class="player">
+        <button class="play" id="playBtn" aria-label="Play preview">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path id="playIcon" d="M8 5v14l11-7z" fill="#111"/>
+          </svg>
+        </button>
+        <div class="track">
+          <p class="song">Lalela Ingoma 16</p>
+          <div class="bar"><div class="fill" id="fill"></div></div>
+        </div>
+        <audio id="audio" preload="none" src="audio/ubhanyazile-preview.mp3"></audio>
+      </div>
+
+      <img src="images/qr.png" alt="QR code to SMS ingoma 16 to 33329" class="qr">
+      <p class="hint">Scan with your phone camera to Vote</p>
+      <a href="sms:33329?&amp;body=ingoma%2016" class="btn">
+        Tap to SMS "ingoma 16" to 33329
+      </a>
+
+    </section>
+
+  </main>
+
+  <script>
+    const audio = document.getElementById("audio");
+    const btn = document.getElementById("playBtn");
+    const icon = document.getElementById("playIcon");
+    const fill = document.getElementById("fill");
+    const song = document.querySelector(".song");
+
+    const PLAY = "M8 5v14l11-7z";
+    const PAUSE = "M6 5h4v14H6zM14 5h4v14h-4z";
+
+    btn.addEventListener("click", async () => {
+      try {
+        if (audio.paused) { await audio.play(); } else { audio.pause(); }
+      } catch (err) {
+        song.textContent = "Audio error: " + err.message;
+      }
+    });
+
+    audio.addEventListener("error", () => {
+      song.textContent = "Audio file not found. Check the audio folder and file name.";
+    });
+
+    audio.addEventListener("play",  () => icon.setAttribute("d", PAUSE));
+    audio.addEventListener("pause", () => icon.setAttribute("d", PLAY));
+    audio.addEventListener("ended", () => { icon.setAttribute("d", PLAY); fill.style.width = "0%"; });
+    audio.addEventListener("timeupdate", () => {
+      if (audio.duration) fill.style.width = (audio.currentTime / audio.duration * 100) + "%";
+    });
+  </script>
+</body>
+</html>

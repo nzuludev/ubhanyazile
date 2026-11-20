@@ -1,0 +1,153 @@
+:root {
+  --main:  #7A1020;   
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", Arial, sans-serif;
+  background: var(--main);  
+}
+
+/* The photo fills the whole screen */
+.poster {
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  background-image: url("images/njabulo.jpg");
+  background-size: cover;
+  background-position: 40% 25%;   
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;   
+  padding: 20px 16px 16px;
+}
+
+.head {
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  color: var(--main);
+  font-size: clamp(34px, 10vw, 56px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  color: #111;
+  font-size: clamp(14px, 4vw, 18px);
+  font-weight: 600;
+}
+
+
+.front {
+  gap: 10px;
+  padding: 14px 16px 16px;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 22px 20px 24px;
+  background: rgba(20, 8, 12, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 22px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.qr {
+  width: 120px;
+  background: white;
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.hint {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  background: #FFC83D;
+  color: #111;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 40px;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: #ffd467;
+}
+
+/*SONG*/
+
+.player {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+}
+
+.play {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: #FFC83D;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.play:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+
+.track {
+  flex: 1;
+  text-align: left;
+}
+
+.song {
+  margin: 0 0 6px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.bar {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.fill {
+  width: 0%;
+  height: 100%;
+  background: #FFC83D;
+}
